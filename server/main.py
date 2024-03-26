@@ -42,7 +42,7 @@ def filtered_subset(filters):
     # orgs_subset = orgs[orgs['rec_status'].isin(rec_statuses)]
     return orgs_subset
 
-def recommend(org, orgs_subset):
+def recommend(org, orgs_subset, startind):
     
     index = orgs_subset[orgs_subset['title'] == org].index[0]
     indexes_to_use = np.array(orgs_subset.index.tolist())
@@ -53,11 +53,12 @@ def recommend(org, orgs_subset):
     matching_indexes = np.in1d(distances[:, 0], indexes_to_use)
     distances = distances[matching_indexes]
 
-    if len(distances) >= 10:
-        for i in distances[0:10]:
+
+    if (len(distances) - startind) >= 10:
+        for i in distances[startind:startind+10]:
             recommended_orgs = pd.concat([recommended_orgs, orgs.iloc[[i[0]]]], ignore_index=True)
     else:
-        for i in distances[0:len(distances)]:
+        for i in distances[startind:startind+(len(distances) - startind)]:
             recommended_orgs = pd.concat([recommended_orgs, orgs.iloc[[i[0]]]], ignore_index=True)
     return recommended_orgs
 
@@ -66,11 +67,23 @@ def closest_name(input_name, orgs_subset):
     return closest
 
 # @app.route("/api/search/", defaults={"name" : ""})
-@app.route("/api/search/<name>/<filters>", methods=['GET'])
-def search(name, filters):
+@app.route("/api/search/<name>/<filters>/<offset>", methods=['GET'])
+def search(name, filters, offset):
     subset = filtered_subset(filters)
     orgname = closest_name(name, subset)
-    return recommend(orgname, subset).to_json(orient="table")
+    startind = int(offset)
+    # indexes_to_use = np.array(orgs_subset.index.tolist())
+    return recommend(orgname, subset, startind).to_json(orient="table")
+
+@app.route("/api/numorgs/<filters>", methods=['GET'])
+def numorgs(filters):
+    subset = filtered_subset(filters)
+    
+    return jsonify (
+        {
+            "numorgs": len(subset.index.tolist())
+        }
+    )
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
