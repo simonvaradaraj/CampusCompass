@@ -23,8 +23,11 @@ function CurrentOrg({ org }) {
         </div> : <div className={`bg-red-100 border-2 border-red-400 p-1 pl-2 pr-2 text-[13px] w-fit mb-2 rounded-md`}>
           Founded: {org.founded}
         </div>}
-        <p className='text-gray-400'>|</p>
-        <p>{org.phonenum}</p>
+       {org.phonenum != 'N/A' && <div className="flex flex-row gap-4">
+          <p className='text-gray-400'>|</p>
+          <p className=''>{org.phonenum}</p>
+        </div>}
+        
       </div>
       <div className="mt-4 flex flex-col">
         <h2 className='font-bold text-lg'>What the Org is About:</h2>

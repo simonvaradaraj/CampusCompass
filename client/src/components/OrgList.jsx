@@ -15,7 +15,7 @@ function Org({org, onClick}) {
       <div onClick={handleClick} className=' w-[450px] md:w-[600px] bg-gray-100 hover:cursor-pointer p-2 mb-1 border-[1px] border-gray-300 hover:drop-shadow-md transition ease-in-out duration-300'>
         <h1 className='font-bold text-lg'>{org.title}</h1>
         <small className='text-gray-700'>{org.rec_status} | <a href={org.website} className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</a> </small>
-        <p>{org.desc}</p>
+        <p>{org.smalldesc}</p>
       </div>
     )
   }
@@ -65,7 +65,7 @@ function OrgList({title, filters, handleCurrentOrg}) {
     <>
         <div className='flex flex-col'>
             {title && <h1 className='font-bold text-2xl mb-2'>Organizations matching "{title}"</h1> }
-            <small className='mb-2'>{numOrgs} results</small>
+            <small className='mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)}</small>
             <div className='scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-400 overflow-y-scroll h-[75vh]'>
               {orgs.map((org, index) => (
                   <Org key={index} onClick={handleCurrentOrg} org ={org}/>
