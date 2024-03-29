@@ -1,15 +1,8 @@
 import PropTypes from 'prop-types';
 // import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function CurrentOrg({ org }) {
-
-  // const [border, setBorder] = useState("")
-  // const [background, setBackground] = useState("")
-
-  // useEffect(() => {
-  //   setBorder(rec_status.split(' ').join('_') + "_Border")
-  //   setBackground(rec_status.split(' ').join('_'))
-  // }, [rec_status])
 
   return (
     <div className='bg-gray-100 w-[45%] border-[1px] border-gray-300 p-5 h-[85vh]'>
@@ -38,11 +31,13 @@ function CurrentOrg({ org }) {
         <a href={org.website} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</span></a>
         {org.website2 != 'N/A' && <a href={org.website2} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website2}</span></a>}
       </div>
-      
 
-      
-      
-      
+      <Link to="/">
+        <div className='bg-gray-100 border-[1px] border-gray-400 absolute top-[80%] flex justify-center w-[43%] h-[10vh] items-center'>
+        click here to go back home :)
+      </div>
+      </Link>
+
     </div>
   )
 }

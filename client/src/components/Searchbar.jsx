@@ -20,7 +20,7 @@ function SearchBar({ handleSearch, value }) {
         <form ref={formRef} onSubmit={handleSubmit}
         className="flex flex-row gap-8 bg-maroon justify-center items-center p-3">
           <label className='flex flex-row items-center justify-center'>
-            <span className='text-white font-bold mr-3'>Discover the Possibilities</span>
+            <span className='text-white font-bold mr-3'></span>
             <input type="text" name="name" value={query} onChange={handleChange} className="bg-white py-3 px-6  placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium w-[500px]" placeholder="Search..."/>
           </label>
         </form>

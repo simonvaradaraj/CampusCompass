@@ -58,36 +58,39 @@ function Filters({ handleFilters }) {
 
   const [orgsPreference, setOrgsPreference] = useState('');
 
-  const handleCheckboxChange = (category) => {
-    setCategories({ ...categories, [category]: !categories[category] });
-  };
+  // const handleCheckboxChange = (category) => {
+  //   setCategories({ ...categories, [category]: !categories[category] });
+  // };
 
   const handleOrgsPreferenceChange = (e) => {
     setOrgsPreference(e.target.value);
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log(e)
     
-    let categoryArray = [];
+    // let categoryArray = [];
     let thresh = "all";
 
-    for (let i = 0; i <= 11; i++) {
-      if (e.target[i].checked) { categoryArray.push(categorylist[i]) }
-    }
+    // for (let i = 0; i <= 11; i++) {
+    //   if (e.target[i].checked) { categoryArray.push(categorylist[i]) }
+    // }
 
-    if (categoryArray.length === 0) {categoryArray = categorylist }
+    // if (categoryArray.length === 0) {categoryArray = categorylist }
 
-    if (e.target[12].checked) { thresh = "rec"}
-    else if (e.target[13].checked) { thresh = "pend"}
-    else if (e.target[14].checked) { thresh = "all" }
+    if (e.target[0].checked) { thresh = "rec"}
+    else if (e.target[1].checked) { thresh = "pend"}
+    else if (e.target[2].checked) { thresh = "all" }
 
     const data = {
-      categories: categoryArray,
+      categories: categorylist,
       threshold: thresh
     }
 
-    // console.log(data)
+    // // console.log(data)
     handleFilters(data)
   }
 
@@ -97,7 +100,7 @@ function Filters({ handleFilters }) {
         <h2 className='font-bold text-lg mb-2'>Filters</h2>
         <form ref={formRef} onSubmit={handleSubmit}
         className="flex flex-col gap-4">
-          <div className='flex flex-col gap-[2px]'>
+          {/* <div className='flex flex-col gap-[2px]'>
             <h2 className='font-bold mb-2'>Categories</h2>
             {Object.keys(categories).map((category, index) => (
               <div key={index}className='flex flex-row items-center'>
@@ -112,7 +115,7 @@ function Filters({ handleFilters }) {
               </div>
             ))}
           </div>
-          <Breakbar/>
+          <Breakbar/> */}
           <div className='flex flex-col gap-[2px]'>
           <h2 className='font-bold mb-2'>Orgs Preference</h2>
             <div className='flex flex-row items-center'>

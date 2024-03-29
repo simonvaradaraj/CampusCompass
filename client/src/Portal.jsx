@@ -3,13 +3,20 @@ import {  useState } from "react"
 import SearchBar from "./components/Searchbar";
 import OrgList from "./components/OrgList";
 import Filters from "./components/Filters";
-import Launch from "./components/Launch";
+// import Launch from "./components/Launch";
 import CurrentOrg from "./components/CurrentOrg";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-export default function App() {
+export default function Portal() {
+
+  let navigate = useNavigate()
+
+  const [ initialQuery ] = useSearchParams()
+
+  // console.log(query)
 
   // const [users, setUsers] = useState([])
-  const [search, setSearch] = useState("")
+  const search = initialQuery.get("query")
   const [org, setOrg] = useState()
   
   const categorylist = [
@@ -32,8 +39,9 @@ export default function App() {
     threshold: "all"
   })
 
-  const handleSearch = (query) => {
-    setSearch(query)
+  const handleSearch = (name) => {
+    // setSearch(query)
+    return navigate(`/search?query=${name}`)
   }
 
   const handleFilters = (data) => {
@@ -47,9 +55,6 @@ export default function App() {
 
   return (
     <>
-      {!search &&
-      <Launch handleSearch={handleSearch}/>
-      }
       {search && 
       <>
         <SearchBar handleSearch={handleSearch} value={search}/>
