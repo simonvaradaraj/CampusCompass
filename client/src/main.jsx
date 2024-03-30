@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Launch from './components/Launch.jsx'
 import { searchAction } from './components/Launch.jsx'
 import NotFound from './components/NotFound.jsx'
+import Discussion from './components/Discussion.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,15 @@ const router = createBrowserRouter([
   {
     path: '/search',
     element: <Portal />,
-  }
+  },
+  {
+    path: '/org',
+    element: <Discussion />,
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App /> */}
     <RouterProvider router={router}/>
   </React.StrictMode>,
 )

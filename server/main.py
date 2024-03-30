@@ -4,18 +4,30 @@ import pandas as pd
 import Levenshtein
 import itertools
 import numpy as np
+import os
+from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 cors = CORS(app, origins='*')
 
-similarity = pd.read_pickle(r"ml_assets\\similarity.pkl")
-orgs = pd.read_pickle(r"ml_assets\\newer_org_list.pkl")
+SECRET_STRING = (os.getenv("MONGO_STRING"))
+client = MongoClient(SECRET_STRING)
+
+# similarity = pd.read_pickle(r"ml_assets\\similarity.pkl")
+
+# orgs = pd.read_pickle(r"ml_assets\\newer_org_list.pkl")
+
+orgs = pd.DataFrame(list(client["orgradar"]["organizations"].find()))
+orgs.drop(columns=['_id', 'index'], inplace=True)
 # smalldesc and desc are the same :(, so im fixing that
 
-def get_sentence(paragraph):
-    return paragraph[:200] + "..."
+# def get_sentence(paragraph):
+#     return paragraph[:200] + "..."
 
-orgs["smalldesc"] = orgs["smalldesc"].apply(get_sentence)
+# orgs["smalldesc"] = orgs["smalldesc"].apply(get_sentence)
 
 # category_map = {
 #     "academics" : ["Academic - Business", "Academic - Law", "Academic - Veterinary Medicine and Biomedical Sciences", "Academic - Honors", "Academic - Science", "Academic - Liberal Arts", "Academic - Education and Human Development", "Academic - Geosciences", "Academic - Architecture", "Academic - Government and Public Service", "Academic - Engineering", "Academic - Health Sciences", "Academic - Agriculture and Life Sciences"],
@@ -94,6 +106,14 @@ def numorgs(query, filters):
             "numorgs": len(subset.index.tolist())
         }
     )
+
+@app.route("/api/getorg/<uni_id>/<org_id>", methods=['GET'])
+def getorg(uni_id, org_id):
+
+    mask = (orgs['uni_id'] == int(uni_id)) & (orgs['org_id'] == int(org_id))
+    org = orgs[mask]
+    
+    return org.to_json(orient="table")
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)

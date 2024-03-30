@@ -39,11 +39,6 @@ export default function Portal() {
     threshold: "all"
   })
 
-  const handleSearch = (name) => {
-    // setSearch(query)
-    return navigate(`/search?query=${name}`)
-  }
-
   const handleFilters = (data) => {
     setFilterData(data)
   }
@@ -57,7 +52,7 @@ export default function Portal() {
     <>
       {search && 
       <>
-        <SearchBar handleSearch={handleSearch} value={search}/>
+        <SearchBar value={search}/>
         <div className="flex flex-row mt-10 gap-8 justify-center">
           <Filters handleFilters={handleFilters}/>
           <OrgList title={search} filters={filterdata} handleCurrentOrg={handleCurrentOrg}/>

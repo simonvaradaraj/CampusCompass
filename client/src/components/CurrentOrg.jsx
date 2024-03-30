@@ -32,9 +32,9 @@ function CurrentOrg({ org }) {
         {org.website2 != 'N/A' && <a href={org.website2} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website2}</span></a>}
       </div>
 
-      <Link to="/">
-        <div className='bg-gray-100 border-[1px] border-gray-400 absolute top-[80%] flex justify-center w-[43%] h-[10vh] items-center'>
-        click here to go back home :)
+      <Link to={`/org?org_id=${org.org_id}&uni_id=${org.uni_id}`}>
+        <div className='bg-gray-200 border-[1px] border-gray-400 absolute top-[80%] flex justify-center w-[43%] h-[10vh] items-center rounded-md transition duration-150 hover:bg-gray-300'>
+        <h2 className='font-bold text-xl text-gray-800'>View the discussion about {org.title}</h2>
       </div>
       </Link>
 
