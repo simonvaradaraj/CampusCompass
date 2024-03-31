@@ -1,10 +1,10 @@
 # Imports
-import pandas as pd
-from pymongo import MongoClient
-import os
-from dotenv import load_dotenv, dotenv_values 
+# import pandas as pd
+# from pymongo import MongoClient
+# import os
+# from dotenv import load_dotenv, dotenv_values 
 
-load_dotenv()
+# load_dotenv()
 
 # data = pd.read_pickle(r"ml_assets\\newer_org_list.pkl")
 
