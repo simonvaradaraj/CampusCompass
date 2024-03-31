@@ -63,7 +63,7 @@ function OrgList({title, filters, handleCurrentOrg}) {
 
   return (
     <>
-        <div className='flex flex-col'>
+        <div className='flex flex-col max-w-[600px]'>
             {title && <h1 className='font-bold text-2xl mb-2'>Organizations matching "{title}"</h1> }
             <small className='mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)}</small>
             <div className='scrollbar-none overflow-y-scroll h-[72vh]'>
