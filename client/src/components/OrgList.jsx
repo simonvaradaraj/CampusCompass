@@ -7,12 +7,12 @@ function Org({org, onClick}) {
 
     const handleClick = () => {
       // Call the onClick function with the organization data
-      console.log(org)
+      // console.log(org)
       onClick({ org });
     };
 
     return (
-      <div onClick={handleClick} className=' w-[450px] md:w-[600px] bg-gray-100 hover:cursor-pointer p-2 mb-1 border-[1px] border-gray-300 hover:drop-shadow-md transition ease-in-out duration-300'>
+      <div onClick={handleClick} className=' w-[450px] md:w-[600px] bg-gray-100 hover:cursor-pointer p-2 mb-2 border-[1px] border-gray-300 hover:drop-shadow-md transition ease-in-out duration-300'>
         <h1 className='font-bold text-lg'>{org.title}</h1>
         <small className='text-gray-700'>{org.rec_status} | <a href={org.website} className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</a> </small>
         <p>{org.smalldesc}</p>
@@ -30,7 +30,7 @@ function OrgList({title, filters, handleCurrentOrg}) {
     const fetchOrgs = async (name, filterdata, offset) => {
         const joinedString = filterdata.categories.join("-") + "&" + filterdata.threshold
         const response = await axios.get(`http://127.0.0.1:8080/api/search/${name}/${joinedString}/${offset}`)
-        console.log(response.data.tabledata)
+        // console.log(response.data.tabledata)
         setOrgs(response.data.data)
     }
 
@@ -66,7 +66,7 @@ function OrgList({title, filters, handleCurrentOrg}) {
         <div className='flex flex-col'>
             {title && <h1 className='font-bold text-2xl mb-2'>Organizations matching "{title}"</h1> }
             <small className='mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)}</small>
-            <div className='scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-400 overflow-y-scroll h-[72vh]'>
+            <div className='scrollbar-none overflow-y-scroll h-[72vh]'>
               {orgs.map((org, index) => (
                   <Org key={index} onClick={handleCurrentOrg} org ={org}/>
               ))}

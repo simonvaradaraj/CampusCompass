@@ -14,7 +14,11 @@ function SearchBar({ value }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return navigate(`/search?query=${query}`)
+    if ( query != "") {
+      return navigate(`/search?query=${query}`)
+    }
+    return navigate(`/search?query=nothing`)
+      
   }
 
   return (

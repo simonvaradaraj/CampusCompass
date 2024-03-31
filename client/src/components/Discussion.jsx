@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import SearchBar from "./Searchbar";
 import axios from 'axios';
+import ReviewForm from "./ReviewForm";
+import RatingList from "./RatingList";
 
-
+import AverageHero from "./AverageHero";
+import CallToAction from "./CallToAction";
 
 function Discussion() {
 
@@ -13,31 +16,72 @@ function Discussion() {
     const org_id = searchParams.get("org_id")
 
     const [org, setOrg] = useState([])
+    const [ratings, setRatings] = useState([])
+    const [showReview, setShowReview] = useState(false)
+
+    let navigate = useNavigate()
 
     const fetchOrg = async (uni_id, org_id) => {
         const response = await axios.get(`http://127.0.0.1:8080/api/getorg/${uni_id}/${org_id}`)
         setOrg(response.data.data[0])
     }
 
+    const handleReview = () => {
+        setShowReview(!showReview)
+    }
+
+    const handleGoBack = () => {
+        return navigate(`/search?query=${org.title}`)
+    }
+
+
+    const fetchRatings = async (uid, oid) => {
+        const response = await axios.get(`http://127.0.0.1:8080/api/getratings/${uid}/${oid}`)
+        console.log(uid, oid)
+        setRatings(response.data.data)
+    }
+
     useEffect(() => {
+        fetchRatings(uni_id, org_id)
         fetchOrg(uni_id, org_id)
     }, [uni_id, org_id])
 
+
     return (
-        <>
+        <div className="">
             {org.title && <SearchBar value={org.title}/>}
             <div className="mt-10">
                 <div className="pl-40 mb-4 w-full">
-                    <h1 className="font-bold text-4xl mb-2 pb-4">{org.title}</h1>
+                    <h1 className="font-bold text-4xl mb-6">{org.title}</h1>
+
+                    <AverageHero ratings={ratings} />
+
+                    <button className="bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={handleReview}>Write a Review</button>
+                    <button className="ml-10 bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={handleGoBack}>Go Back</button>
+                    <h2 className="mt-4 text-xl font-bold">{ratings.length} {ratings.length != 1 ? "Reviews" : "Review"}</h2>
                 </div>
             </div>
-            <div className="flex justify-center">
-                <div>
-                    
+            {ratings.length != 0 ? 
+            <div className="flex justify-center h-[95vh] overflow-scroll scrollbar-none">
+                <RatingList ratings={ratings}/>
+            </div> :
+             <div className="flex justify-center overflow-scroll scrollbar-none">
+                <CallToAction onClick={handleReview}/>
+            </div> 
+            }
+            {showReview && <>
+                <div className="fixed top-0 left-0 w-full bg-black opacity-35 h-full"></div>
+                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
+                    <ReviewForm handleReview={handleReview} uni_id={org.uni_id} org_id={org.org_id}/>
                 </div>
-            </div>
-        </>
+            </>}
+            
+        </div>
     )
 }
 
 export default Discussion
+
+// AverageHero.propTypes = {
+//     ratings: PropTypes.array.isRequired
+// }
