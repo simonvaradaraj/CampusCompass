@@ -36,7 +36,7 @@ function Discussion() {
 
     const successfulReview = () => {
         setShowReview(false)
-        window.location.reload()
+        // window.location.reload()
     }
 
     const handleGoBack = () => {
