@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 
 // const back = "https://orgradar-backend-g09zvytbq-simonvaradarajs-projects.vercel.app/"
-const local = "http://127.0.0.1:8080"
+const local = "https://orgradar-backend.onrender.com/"
 
 function Org({org, onClick}) {
 

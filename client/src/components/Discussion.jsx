@@ -22,12 +22,21 @@ function Discussion() {
     let navigate = useNavigate()
 
     const fetchOrg = async (uni_id, org_id) => {
-        const response = await axios.get(`http://127.0.0.1:8080/api/getorg/${uni_id}/${org_id}`)
+        const response = await axios.get(`https://orgradar-backend.onrender.com/api/getorg/${uni_id}/${org_id}`)
         setOrg(response.data.data[0])
     }
 
-    const handleReview = () => {
-        setShowReview(!showReview)
+    const goToReview = () => {
+        setShowReview(true)
+    }
+
+    const leaveReview = () => {
+        setShowReview(false)
+    }
+
+    const successfulReview = () => {
+        setShowReview(false)
+        window.location.reload()
     }
 
     const handleGoBack = () => {
@@ -36,7 +45,7 @@ function Discussion() {
 
 
     const fetchRatings = async (uid, oid) => {
-        const response = await axios.get(`http://127.0.0.1:8080/api/getratings/${uid}/${oid}`)
+        const response = await axios.get(`https://orgradar-backend.onrender.com/api/getratings/${uid}/${oid}`)
         console.log(uid, oid)
         setRatings(response.data.data)
     }
@@ -56,7 +65,7 @@ function Discussion() {
 
                     <AverageHero ratings={ratings} />
 
-                    <button className="bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={handleReview}>Write a Review</button>
+                    <button className="bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={goToReview}>Write a Review</button>
                     <button className="ml-10 bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={handleGoBack}>Go Back</button>
                     <h2 className="mt-4 text-xl font-bold">{ratings.length} {ratings.length != 1 ? "Reviews" : "Review"}</h2>
                 </div>
@@ -66,13 +75,13 @@ function Discussion() {
                 <RatingList ratings={ratings}/>
             </div> :
              <div className="flex justify-center overflow-scroll scrollbar-none">
-                <CallToAction onClick={handleReview}/>
+                <CallToAction onClick={goToReview}/>
             </div> 
             }
             {showReview && <>
                 <div className="fixed top-0 left-0 w-full bg-black opacity-35 h-full"></div>
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
-                    <ReviewForm handleReview={handleReview} uni_id={org.uni_id} org_id={org.org_id}/>
+                    <ReviewForm handleReview={successfulReview} handleCancel={leaveReview} uni_id={org.uni_id} org_id={org.org_id}/>
                 </div>
             </>}
             

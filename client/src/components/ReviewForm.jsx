@@ -2,7 +2,7 @@
 import axios from 'axios'
 import PropTypes from 'prop-types';
 
-function ReviewForm({handleReview, uni_id, org_id}) {
+function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -24,7 +24,7 @@ function ReviewForm({handleReview, uni_id, org_id}) {
         }
         
         try {
-            const response = await axios.post('http://127.0.0.1:8080/api/createrating', data);
+            const response = await axios.post('https://orgradar-backend.onrender.com/api/createrating', data);
             console.log(response.data);
             handleReview()
             // Handle success
@@ -32,10 +32,6 @@ function ReviewForm({handleReview, uni_id, org_id}) {
             console.error(error);
             // Handle error
         }
-    }
-
-    const handleCancel = () => {
-        handleReview()
     }
 
     return (
@@ -102,6 +98,7 @@ export default ReviewForm
 
 ReviewForm.propTypes = {
     handleReview: PropTypes.func.isRequired, // Validate that getMessage is a function and is required
+    handleCancel: PropTypes.func.isRequired,
     uni_id: PropTypes.number.isRequired,
     org_id: PropTypes.number.isRequired
 };

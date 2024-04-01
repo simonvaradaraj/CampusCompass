@@ -14,10 +14,10 @@ function AverageHero({ratings}) {
             };
         }
 
-        const totalSocial = ratings.reduce((sum, rating) => sum + rating.social, 0);
-        const totalEvents = ratings.reduce((sum, rating) => sum + rating.events, 0);
-        const totalHappiness = ratings.reduce((sum, rating) => sum + rating.happiness, 0);
-        const totalOfficers = ratings.reduce((sum, rating) => sum + rating.officers, 0);
+        const totalSocial = ratings.reduce((sum, rating) => sum + Number(rating.social), 0);
+        const totalEvents = ratings.reduce((sum, rating) => sum + Number(rating.events), 0);
+        const totalHappiness = ratings.reduce((sum, rating) => sum + Number(rating.happiness), 0);
+        const totalOfficers = ratings.reduce((sum, rating) => sum + Number(rating.officers), 0);
 
         const averageSocial = Math.floor(totalSocial / ratings.length);
         const averageEvents = Math.floor(totalEvents / ratings.length);
