@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 
+// const back = "https://orgradar-backend-g09zvytbq-simonvaradarajs-projects.vercel.app/"
+const local = "http://127.0.0.1:8080"
+
 function Org({org, onClick}) {
 
     const handleClick = () => {
@@ -29,14 +32,14 @@ function OrgList({title, filters, handleCurrentOrg}) {
 
     const fetchOrgs = async (name, filterdata, offset) => {
         const joinedString = filterdata.categories.join("-") + "&" + filterdata.threshold
-        const response = await axios.get(`http://127.0.0.1:8080/api/search/${name}/${joinedString}/${offset}`)
+        const response = await axios.get(`${local}/api/search/${name}/${joinedString}/${offset}`)
         // console.log(response.data.tabledata)
         setOrgs(response.data.data)
     }
 
     const fetchNumOrgs = async (query, filterdata) => {
       const joinedString = filterdata.categories.join("-") + "&" + filterdata.threshold
-      const response = await axios.get(`http://127.0.0.1:8080/api/numorgs/${query}/${joinedString}`)
+      const response = await axios.get(`${local}/api/numorgs/${query}/${joinedString}`)
       // console.log(response.data.numorgs)
       if (response.data.numorgs != numOrgs) {
         setOffset(0)
