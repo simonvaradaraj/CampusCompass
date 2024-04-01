@@ -23,13 +23,14 @@ function AverageHero({ratings}) {
         const averageEvents = Math.floor(totalEvents / ratings.length);
         const averageHappiness = Math.floor(totalHappiness / ratings.length);
         const averageOfficers = Math.floor(totalOfficers / ratings.length);
+        const averageOverall = ((totalSocial + totalEvents + totalHappiness + totalOfficers) / (ratings.length * 4)).toFixed(1)
 
         return {
             social: averageSocial,
             events: averageEvents,
             happiness: averageHappiness,
             officers: averageOfficers,
-            overall: ((averageSocial + averageEvents + averageHappiness + averageOfficers) / 4).toFixed(1)
+            overall: averageOverall
         };
     };
 
