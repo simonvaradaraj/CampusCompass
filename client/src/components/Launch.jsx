@@ -30,6 +30,10 @@ function Launch() {
 
   return (
     <div className='bg-maroon h-[100vh] flex items-center justify-center flex-col'>
+        <div className='absolute top-5 left-5 text-white font-bold text-xl  flex items-center justify-center flex-row'>
+          <img src="vite.svg" alt="Logo" className="w-8" />
+          <h1 className='ml-2 font-normal text-xl'>OrgRadar</h1>
+        </div>
         <h1 className='text-white font-bold text-5xl mb-10'>What to Join?</h1>
         <Form ref={formRef} action="/search"
         className="w-[100vw]">
@@ -37,6 +41,9 @@ function Launch() {
             <input type="text" name="query" value={query} onChange={handleChange} className="bg-white py-3 px-6  placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium w-[40%]" placeholder="What do you want in an org?"/>
           </label>
         </Form>
+        <div className='absolute bottom-10 text-white font-bold text-xl'>
+          <h1>If you have feedback, contact me at <span className='text-purple-300'>simonv03@tamu.edu</span></h1>
+        </div>
     </div>
   )
 }
