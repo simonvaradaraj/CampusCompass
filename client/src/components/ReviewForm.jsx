@@ -1,5 +1,6 @@
 // use axios to make a post request on form submission
 import axios from 'axios'
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
@@ -34,58 +35,70 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
         }
     }
 
+    const [isFormComplete, setIsFormComplete] = useState(false);
+
+    const handleInputChange = () => {
+        const form = document.getElementById("reviewForm");
+        const formData = new FormData(form);
+        const isComplete = Array.from(formData.values()).every(value => value !== "");
+        setIsFormComplete(isComplete);
+    }
+
     return (
         <div className="bg-white w-[50%] h-[65vh] border-[1px] border-gray-400 p-2 overflow-y-scroll scrollbar-none">
             {/* create a form that has inputs role (dropdown), review (textarea), grouped together (social (1-5), events (1-5), happiness (1-5), officers (1-5)), insight question (dropdown), question answer (textarea)*/}
-            <form className="flex flex-col items-center justify-center h-full pb-4" onSubmit={handleSubmit}>
+            <form id="reviewForm" className="flex flex-col items-center justify-center h-full pb-4" onSubmit={handleSubmit}>
                 <h1 className="font-bold text-2xl mt-2 mb-4">Write a Review</h1>
                 <div className="w-[80%]">
                     <label htmlFor="role" className="block font-bold">Role</label>
-                    <select name="role" id="role" className="w-full p-2 border-[1px] border-gray-400">
+                    <select name="role" id="role" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}>
+                        <option value="">Select a role</option>
                         <option value="nonmember">Non-Member</option>
                         <option value="member">Member</option>
                         <option value="officer">Officer</option>
                         <option value="alumni">Alumni</option>
+                        <option value="exmember">Ex-Member</option>
                     </select>
                 </div>
                 <div className="w-[80%] mt-4">
                     <label htmlFor="review" className="block font-bold">Review</label>
-                    <textarea name="review" id="review" placeholder='Let your thoughts out...' className="w-full p-2 border-[1px] border-gray-400"></textarea>
+                    <textarea name="review" id="review" placeholder='Let your thoughts out...' className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}></textarea>
                 </div>
                 <div className="w-[80%] mt-4 flex flex-row gap-4">
                     <div className="w-[80%]">
-                        <label htmlFor="social" className="block font-bold">Social</label>
-                        <input type="number" min='1' max='5' placeholder='1' name="social" id="social" className="w-full p-2 border-[1px] border-gray-400"/>
+                        <label htmlFor="social" className="block font-bold">Social <span className='text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="social" id="social" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="events" className="block font-bold">Events</label>
-                        <input type="number" min='1' max='5' placeholder='1' name="events" id="events" className="w-full p-2 border-[1px] border-gray-400"/>
+                        <label htmlFor="events" className="block font-bold">Events <span className='text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="events" id="events" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="happiness" className="block font-bold">Happiness</label>
-                        <input type="number" min='1' max='5' placeholder='1' name="happiness" id="happiness" className="w-full p-2 border-[1px] border-gray-400"/>
+                        <label htmlFor="happiness" className="block font-bold">Happiness <span className='text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="happiness" id="happiness" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="officers" className="block font-bold">Officers</label>
-                        <input type="number" min='1' max='5' placeholder='1' name="officers" id="officers" className="w-full p-2 border-[1px] border-gray-400"/>
+                        <label htmlFor="officers" className="block font-bold">Officers <span className='text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="officers" id="officers" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                 </div>
                 </div>
                 <div className="w-[80%] mt-4">
                     <label htmlFor="insight" className="block font-bold">Insight Question</label>
-                    <select name="insight" id="insight" className="w-full p-2 border-[1px] border-gray-400">
+                    <select name="insight" id="insight" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}>
                         <option value="1">How did this organization help you grow?</option>
                         <option value="2">What was the most memorable event?</option>
                         <option value="3">What was the most challenging part?</option>
                         <option value="4">What&apos;s something you wish you knew when first joining?</option>
-                        <option value="4">Any tips for the interview process?</option>
+                        <option value="5">Any tips for the interview process?</option>
+                        <option value="6">What&apos;s the time committment like?</option>
                     </select>
                 </div>
                 <div className="w-[80%] mt-4">
                     <label htmlFor="answer" className="block font-bold">Answer</label>
-                    <textarea name="answer" placeholder='This will help other students...' id="answer" className="w-full p-2 border-[1px] border-gray-400"></textarea>
+                    <textarea name="answer" placeholder='This will help other students...' id="answer" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}></textarea>
                 </div>
                 <div className="flex flex-row gap-10">
-                    <button className="bg-blue-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-blue-400 transition duration-150">Submit</button>
+                    <button className="bg-blue-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-blue-400 transition duration-150" disabled={!isFormComplete}>Submit</button>
                     <button className="bg-red-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-red-400 transition duration-150" onClick={handleCancel}>Cancel</button>
                 </div>
                 {/* <div className="h-[3vh]"></div> */}

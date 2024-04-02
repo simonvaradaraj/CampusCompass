@@ -8,7 +8,8 @@ const insightQuestions = {
     '2': "What was the most memorable event?",
     '3': "What was the most challenging part?",
     '4': "What's something you wish you knew when first joining?",
-    '5': "Any tips for the interview process?"
+    '5': "Any tips for the interview process?",
+    '6': "What's the time committment like?"
 };
 
 // map that maps the role value to the role
@@ -16,7 +17,8 @@ const roles = {
     "nonmember": "non-member",
     "member": "member",
     "officer": "officer",
-    "alumni": "alumni"
+    "alumni": "alumni",
+    "exmember": "ex-member"
 }
 
 function Rating({rating}) {
