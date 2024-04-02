@@ -29,12 +29,12 @@ function CurrentOrg({ org }) {
       <div className="mt-2 flex flex-col">
         <h2 className='font-bold text-lg'>Website Links:</h2>
         <a href={org.website} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</span></a>
-        {org.website2 != 'N/A' && <a href={org.website2} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website2}</span></a>}
+        {org.website2 != 'N/A' && <a href={`https://${org.website2}`} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website2}</span></a>}
       </div>
 
       <Link to={`/org?org_id=${org.org_id}&uni_id=${org.uni_id}`}>
         <div className='bg-gray-200 border-[1px] border-gray-400 absolute top-[80%] flex justify-center w-[43%] h-[10vh] items-center rounded-md transition duration-150 hover:bg-gray-300'>
-        <h2 className='font-bold text-xl text-gray-800'>View the discussion about {org.title}</h2>
+        <h2 className='font-bold text-xl text-gray-800'>View reviews about {org.title}</h2>
       </div>
       </Link>
 
