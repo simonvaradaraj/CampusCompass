@@ -54,9 +54,9 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
     }
 
     return (
-        <div className="bg-white w-[50%] h-[65vh] border-[1px] border-gray-400 p-2 overflow-y-scroll scrollbar-none">
+        <div className="bg-white w-[50%] h-[70vh] border-[1px] border-gray-400 p-2">
             {/* create a form that has inputs role (dropdown), review (textarea), grouped together (social (1-5), events (1-5), happiness (1-5), officers (1-5)), insight question (dropdown), question answer (textarea)*/}
-            <form id="reviewForm" className="flex flex-col items-center justify-center h-full pb-4" onSubmit={handleSubmit}>
+            <form id="reviewForm" className="flex flex-col items-center justify-center h-full pb-4 overflow-y-scroll scrollbar-none" onSubmit={handleSubmit}>
                 <h1 className="font-bold text-2xl mt-2 mb-4">Write a Review</h1>
                 <div className="w-[80%]">
                     <label htmlFor="role" className="block font-bold">Role</label>
