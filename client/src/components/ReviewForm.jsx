@@ -36,12 +36,21 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
     }
 
     const [isFormComplete, setIsFormComplete] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(true);
 
     const handleInputChange = () => {
         const form = document.getElementById("reviewForm");
         const formData = new FormData(form);
         const isComplete = Array.from(formData.values()).every(value => value !== "");
         setIsFormComplete(isComplete);
+
+        const isInvalid = Array.from(formData.entries()).some(([name, value]) => {
+            if (name === "social" || name === "events" || name === "happiness" || name === "officers") {
+                return Number(value) < 1 || Number(value) > 5;
+            }
+            return false;
+        });
+        setIsFormValid(!isInvalid);
     }
 
     return (
@@ -98,7 +107,7 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
                     <textarea name="answer" placeholder='This will help other students...' id="answer" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}></textarea>
                 </div>
                 <div className="flex flex-row gap-10">
-                    <button className="bg-blue-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-blue-400 transition duration-150" disabled={!isFormComplete}>Submit</button>
+                    <button className="bg-blue-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-blue-400 transition duration-150" disabled={!isFormComplete || !isFormValid}>Submit</button>
                     <button className="bg-red-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-red-400 transition duration-150" onClick={handleCancel}>Cancel</button>
                 </div>
                 {/* <div className="h-[3vh]"></div> */}
