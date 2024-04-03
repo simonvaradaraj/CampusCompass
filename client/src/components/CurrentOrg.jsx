@@ -46,7 +46,7 @@ function CurrentOrg({ org, onClick }) {
       </div>
 
       
-      <div className="flex md:hidden absolute top-0 left-0 w-full h-full bg-gray-100 flex-col p-4 items-center">
+      <div className="flex md:hidden absolute top-0 left-0 w-full h-[110vh] bg-gray-100 flex-col p-4 items-center">
         <button className="absolute top-4 left-4 flex flex-row items-center" onClick={toggleVisibility}><img src="back_arrow.png" alt="back arrow" className='w-7'/><p className='text-sm ml-[-2px] font-bold'>Go Back</p></button>
         <div className="w-full mt-10">
           <h1 className='font-bold text-2xl mb-1'>{org.title}</h1>
