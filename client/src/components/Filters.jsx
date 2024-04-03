@@ -95,7 +95,7 @@ function Filters({ handleFilters }) {
   }
 
   return (
-    <div className="w-[10%]">
+    <div className="hidden sm:block w-[10%]">
 
         <h2 className='font-bold text-lg mb-2'>Filters</h2>
         <form ref={formRef} onSubmit={handleSubmit}

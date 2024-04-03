@@ -15,10 +15,10 @@ function Org({org, onClick}) {
     };
 
     return (
-      <div onClick={handleClick} className=' w-[450px] md:w-[600px] bg-gray-100 hover:cursor-pointer p-2 mb-2 border-[1px] border-gray-300 hover:drop-shadow-md transition ease-in-out duration-300'>
-        <h1 className='font-bold text-lg'>{org.title}</h1>
-        <small className='text-gray-700'>{org.rec_status} | <a href={org.website} className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</a> </small>
-        <p>{org.smalldesc}</p>
+      <div onClick={handleClick} className=' w-[350px] sm:w-[450px] md:w-[600px] bg-gray-100 hover:cursor-pointer p-2 mb-1 sm:mb-2 border-[1px] border-gray-300 hover:drop-shadow-md transition ease-in-out duration-300'>
+        <h1 className='font-bold text-[14px] md:text-lg'>{org.title}</h1>
+        <small className='text-gray-700 text-xs sm:text-sm'>{org.rec_status} | <a href={org.website} className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</a> </small>
+        <p className='text-xs sm:text-sm md:text-md'>{org.smalldesc}</p>
       </div>
     )
   }
@@ -67,8 +67,8 @@ function OrgList({title, filters, handleCurrentOrg}) {
   return (
     <>
         <div className='flex flex-col max-w-[600px]'>
-            {title && <h1 className='font-bold text-2xl mb-2'>Organizations matching "{title}"</h1> }
-            <small className='mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)}</small>
+            {title && <h1 className='font-bold text-lg sm:text-xl md:text-2xl mb-2'>Organizations matching "{title}"</h1> }
+            <small className='text-xs md:text-sm mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)}</small>
             <div className='scrollbar-none overflow-y-scroll h-[72vh]'>
               {orgs.map((org, index) => (
                   <Org key={index} onClick={handleCurrentOrg} org ={org}/>

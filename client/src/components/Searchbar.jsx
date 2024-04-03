@@ -24,7 +24,7 @@ function SearchBar({ value }) {
   return (
     <div>
         <form ref={formRef} onSubmit={handleSubmit}
-        className="flex flex-row gap-4 md:gap-8 bg-maroon justify-center items-center p-3 w-ful sm:text-sm md:text-lg">
+        className="flex flex-row gap-4 md:gap-8 bg-maroon justify-center items-center p-3 w-full sm:text-sm md:text-lg">
           <label className='flex flex-row items-center justify-center'>
             <div className='text-white font-bold mr-3 lg:mr-6 text-sm md:text-lg w-[130px] md:w-[40%] text-right'>Discover the Possibilities</div>
             <div className='w-[60vw]'>
