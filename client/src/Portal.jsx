@@ -39,13 +39,20 @@ export default function Portal() {
     threshold: "all"
   })
 
+  const [isHidden, setIsHidden] = useState(true)
+
   const handleFilters = (data) => {
     setFilterData(data)
   }
 
   const handleCurrentOrg = (org) => {
     setOrg(org)
-    // console.log(org)
+    setIsHidden(false)
+  }
+
+  const toggleVisibility = () => {
+    setIsHidden(!isHidden)
+    // console.log(isHidden)
   }
 
   return (
@@ -54,9 +61,10 @@ export default function Portal() {
       <>
         <SearchBar value={search}/>
         <div className="flex flex-row mt-4 sm:mt-6 md:mt-10 gap-8 justify-center">
+          {/* make sure to add functionality for smaller screen widths */}
           <Filters handleFilters={handleFilters}/>
           <OrgList title={search} filters={filterdata} handleCurrentOrg={handleCurrentOrg}/>
-          {org && <CurrentOrg {...org}/>}
+          {org && !isHidden && <CurrentOrg {...org} onClick={toggleVisibility}/> }
         </div>
       </>}
     </>
