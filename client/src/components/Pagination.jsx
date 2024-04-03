@@ -37,7 +37,7 @@ const Pagination = props => {
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul
-      className={classnames('pagination-container', { [className]: className }) + " flex flex-row justify-center mt-6 mb-3 gap-8"}
+      className={classnames('pagination-container', { [className]: className }) + " flex flex-row justify-center mt-3 md:mt-6 mb-1 sm:mb-3 gap-4 md:gap-8 text-xs xs:text-sm md:text-lg "}
     >
        {/* Left navigation arrow */}
       <li

@@ -53,7 +53,7 @@ export default function Portal() {
       {search && 
       <>
         <SearchBar value={search}/>
-        <div className="flex flex-row mt-10 gap-8 justify-center">
+        <div className="flex flex-row mt-4 sm:mt-6 md:mt-10 gap-8 justify-center">
           <Filters handleFilters={handleFilters}/>
           <OrgList title={search} filters={filterdata} handleCurrentOrg={handleCurrentOrg}/>
           {org && <CurrentOrg {...org}/>}
