@@ -38,13 +38,13 @@ function AverageHero({ratings}) {
 
     return (
         <div className="flex flex-row gap-10 mb-4">
-            <div className="flex flex-col justify-center items-center w-[20%]">
-                <h2 className="text-[70px] font-bold">{averageSubscores.overall}</h2>
-                <p className="text-xl">Overall Score</p>
+            <div className="flex flex-col justify-center items-center w-[40%] lg:w-[20%]">
+                <h2 className="text-5xl lg:text-[70px] font-bold mb-1">{averageSubscores.overall}</h2>
+                <p className="text-sm">Overall Score</p>
             </div>
-            <div className="bg-gray-200 w-[25%] p-4 border-[1px] border-gray-400 ">
-                <h1 className="font-bold text-xl mb-3">Section Average Scores</h1>
-                <div className="grid grid-cols-2 gap-4">
+            <div className="bg-gray-200 w-full lg:w-[25%] p-2 lg:p-4 border-[1px] border-gray-400 ">
+                <h1 className="font-bold text-md lg:text-xl mb-1 lg:mb-3">Section Average Scores</h1>
+                <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                         <h1 className="font-bold">Social</h1>
                         {averageSubscores.social != "N/A" ? <SquareRow number={Number(averageSubscores.social)}/> : "N/A"}

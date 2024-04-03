@@ -23,13 +23,13 @@ const roles = {
 
 function Rating({rating}) {
   return (
-    <div className='bg-gray-200 w-[40vw] p-4 border-[1px] border-gray-400 flex flex-col'>
+    <div className='bg-gray-200 w-[320px] sm:w-[40%] md:w-[500px] lg:w-[40vw] p-4 border-[1px] border-gray-400 flex flex-col'>
         <div className="flex flex-row justify-between">
-            <h1 className="font-bold text-xl">This review was made by a {roles[rating.role]}</h1>
+            <h1 className="font-bold text-md lg:text-xl">This review was made by a {roles[rating.role]}</h1>
             <h2 className="font-bold text-xl">{rating.rating}</h2>
         </div>
-        <p>{rating.review}</p>
-        <div className="grid grid-cols-2 justify-between mt-2 mb-4 gap-4">
+        <p className='text-[14px] md:text-md'>{rating.review}</p>
+        <div className="grid grid-cols-2 justify-between mt-1 lg:mt-2 mb-4 gap-3 lg:gap-4 text-md">
             <div>
                 <h1 className="font-bold">Social</h1>
                 <SquareRow number={Number(rating.social)}/>
@@ -48,8 +48,8 @@ function Rating({rating}) {
             </div>
         </div>
         <div>
-            <h1 className="font-bold">{insightQuestions[rating.insight_q]}</h1>
-            <p>{rating.insight_a}</p>
+            <h1 className="font-bold text-md">{insightQuestions[rating.insight_q]}</h1>
+            <p className='mt-1 text-[14px] md:text-md'>{rating.insight_a}</p>
         </div>
 
     </div>

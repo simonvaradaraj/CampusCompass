@@ -8,7 +8,7 @@ function SquareRow({ number }) {
             {Array.from({ length: number }, (_, index) => (
                 <div
                     key={index}
-                    className={`w-6 h-6 mr-2`}
+                    className={` w-3 md:w-4 lg:w-6 h-3  md:h-4 lg:h-6 mr-1 lg:mr-2`}
                     style={{ backgroundColor: colors[number - 1] }}
                 ></div>
             ))}

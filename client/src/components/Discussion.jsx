@@ -59,15 +59,15 @@ function Discussion() {
     return (
         <div className="">
             {org.title && <SearchBar value={org.title}/>}
-            <div className="mt-10">
-                <div className="pl-40 mb-4 w-full">
-                    <h1 className="font-bold text-4xl mb-6">{org.title}</h1>
+            <div className="mt-10 pl-5 pr-5">
+                <div className=" lg:pl-[6rem] mb-4">
+                    <h1 className="font-bold text-2xl lg:text-4xl mb-6">{org.title}</h1>
 
                     <AverageHero ratings={ratings} />
 
-                    <button className="bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={goToReview}>Write a Review</button>
-                    <button className="ml-10 bg-gray-200 p-2 w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150" onClick={handleGoBack}>Go Back</button>
-                    <h2 className="mt-4 text-xl font-bold">{ratings.length} {ratings.length != 1 ? "Reviews" : "Review"}</h2>
+                    <button className="mt-3 bg-gray-200 p-2 w-28 lg:w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150 text-sm lg:text-md" onClick={goToReview}>Write a Review</button>
+                    <button className="ml-6 lg:ml-10 bg-gray-200 p-2 w-28 lg:w-32 border-[1px] border-gray-400 hover:bg-gray-300 transition duration-150 text-sm lg:text-md" onClick={handleGoBack}>Go Back</button>
+                    <h2 className="mt-4 text-lg lg:text-xl font-bold">{ratings.length} {ratings.length != 1 ? "Reviews" : "Review"}</h2>
                 </div>
             </div>
             {ratings.length != 0 ? 

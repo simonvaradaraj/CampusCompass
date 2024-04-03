@@ -54,10 +54,10 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
     }
 
     return (
-        <div className="bg-white w-[50%] h-[70vh] border-[1px] border-gray-400 p-2">
+        <div className="bg-white w-[80%] lg:w-[50%] h-[70vh] border-[1px] border-gray-400 p-1 lg:p-2 text-xs xs:text-sm md:text-md lg:text-lg">
             {/* create a form that has inputs role (dropdown), review (textarea), grouped together (social (1-5), events (1-5), happiness (1-5), officers (1-5)), insight question (dropdown), question answer (textarea)*/}
             <form id="reviewForm" className="flex flex-col items-center justify-center h-full pb-4 overflow-y-scroll scrollbar-none" onSubmit={handleSubmit}>
-                <h1 className="font-bold text-2xl mt-2 mb-4">Write a Review</h1>
+                <h1 className="font-bold text-lg xs:text-xl lg:text-2xl mt-6 mb-2 lg:mb-4">Write a Review</h1>
                 <div className="w-[80%]">
                     <label htmlFor="role" className="block font-bold">Role</label>
                     <select name="role" id="role" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}>
@@ -69,31 +69,31 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
                         <option value="exmember">Ex-Member</option>
                     </select>
                 </div>
-                <div className="w-[80%] mt-4">
+                <div className="w-[80%] mt-2 lg:mt-4">
                     <label htmlFor="review" className="block font-bold">Review</label>
                     <textarea name="review" id="review" placeholder='Let your thoughts out...' className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}></textarea>
                 </div>
-                <div className="w-[80%] mt-4 flex flex-row gap-4">
+                <div className="w-[80%] mt-2 lg:mt-4 flex flex-row gap-4">
                     <div className="w-[80%]">
-                        <label htmlFor="social" className="block font-bold">Social <span className='text-sm font-normal'>(1-5)</span></label>
-                        <input type="number" min='1' max='5' placeholder='1' name="social" id="social" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
+                        <label htmlFor="social" className="block font-bold">Social <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="social" id="social" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="events" className="block font-bold">Events <span className='text-sm font-normal'>(1-5)</span></label>
-                        <input type="number" min='1' max='5' placeholder='1' name="events" id="events" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
+                        <label htmlFor="events" className="block font-bold">Events <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="events" id="events" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="happiness" className="block font-bold">Happiness <span className='text-sm font-normal'>(1-5)</span></label>
-                        <input type="number" min='1' max='5' placeholder='1' name="happiness" id="happiness" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
+                        <label htmlFor="happiness" className="block font-bold">Happiness <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="happiness" id="happiness" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="officers" className="block font-bold">Officers <span className='text-sm font-normal'>(1-5)</span></label>
-                        <input type="number" min='1' max='5' placeholder='1' name="officers" id="officers" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
+                        <label htmlFor="officers" className="block font-bold">Officers <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <input type="number" min='1' max='5' placeholder='1' name="officers" id="officers" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                 </div>
                 </div>
-                <div className="w-[80%] mt-4">
+                <div className="w-[80%] mt-2 lg:mt-4">
                     <label htmlFor="insight" className="block font-bold">Insight Question</label>
-                    <select name="insight" id="insight" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}>
+                    <select name="insight" id="insight" className="w-full p-1 lg:p-2 border-[1px] border-gray-400" required onChange={handleInputChange}>
                         <option value="1">How did this organization help you grow?</option>
                         <option value="2">What was the most memorable event?</option>
                         <option value="3">What was the most challenging part?</option>
@@ -102,11 +102,11 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
                         <option value="6">What&apos;s the time committment like?</option>
                     </select>
                 </div>
-                <div className="w-[80%] mt-4">
+                <div className="w-[80%] mt-2 lg:mt-4">
                     <label htmlFor="answer" className="block font-bold">Answer</label>
                     <textarea name="answer" placeholder='This will help other students...' id="answer" className="w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}></textarea>
                 </div>
-                <div className="flex flex-row gap-10">
+                <div className="flex flex-row gap-5 lg:gap-10">
                     <button className="bg-blue-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-blue-400 transition duration-150" disabled={!isFormComplete || !isFormValid}>Submit</button>
                     <button className="bg-red-500 text-white p-2 pl-3 pr-3 mt-4 hover:bg-red-400 transition duration-150" onClick={handleCancel}>Cancel</button>
                 </div>
