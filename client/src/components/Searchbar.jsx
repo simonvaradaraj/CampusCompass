@@ -22,12 +22,14 @@ function SearchBar({ value }) {
   }
 
   return (
-    <div className="">
+    <div>
         <form ref={formRef} onSubmit={handleSubmit}
-        className="flex flex-row gap-8 bg-maroon justify-center items-center p-3">
+        className="flex flex-row gap-4 md:gap-8 bg-maroon justify-center items-center p-3 w-ful sm:text-sm md:text-lg">
           <label className='flex flex-row items-center justify-center'>
-            <span className='text-white font-bold mr-3'>Discover the Possibilities</span>
-            <input type="text" name="name" value={query} onChange={handleChange} className="bg-white py-3 px-6  placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium w-[500px]" placeholder="Search..."/>
+            <div className='text-white font-bold mr-3 lg:mr-6 text-sm md:text-lg w-[130px] md:w-[40%] text-right'>Discover the Possibilities</div>
+            <div className='w-[60vw]'>
+              <input type="text" name="name" value={query} onChange={handleChange} className="bg-white py-2 md:py-3 px-4 md:px-6 w-[90%] sm:w-[70%] md:w-full lg:w-[70%] placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium" placeholder="Search..."/>
+              </div>
           </label>
         </form>
     </div>
