@@ -31,10 +31,10 @@ function Launch() {
   return (
     <div className='bg-maroon h-[100vh] flex items-center justify-center flex-col'>
       <div className='absolute top-5 left-5 text-white font-bold text-xl  flex items-center justify-center flex-row'>
-        <img src="vite.svg" alt="Logo" className="w-8" />
-        <h1 className='ml-2 font-normal text-xl'>OrgRadar</h1>
+        <img src="vite.svg" alt="Logo" className=" w-6 sm:w-8" />
+        <h1 className='ml-2 font-normal text-[14px] md:text-xl'>OrgRadar</h1>
       </div>
-      <h1 className='text-white font-bold text-3xl md:text-5xl mb-6 md:mb-10'>What to Join?</h1>
+      <h1 className='text-white font-bold text-xl xs:text-2xl sm:text-3xl md:text-5xl mb-4 sm:mb-6 md:mb-10'>What to Join?</h1>
       <Form ref={formRef} action="/search" className="w-[100vw]">
         <label className='flex flex-row items-center justify-center'>
           <input
@@ -42,12 +42,12 @@ function Launch() {
             name="query"
             value={query}
             onChange={handleChange}
-            className="bg-white py-3 px-6  placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium w-[60%] lg:w-[40%]"
+            className="bg-white py-3 px-6  placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium w-[60%] lg:w-[40%] text-xs xs:text-sm sm:text-md md:text-lg"
             placeholder="What do you want in an org?"
           />
         </label>
       </Form>
-      <div className='absolute bottom-10 text-white font-bold text-md md:text-xl'>
+      <div className='absolute bottom-10 text-white font-bold text-xs xs:text-sm sm:text-md md:text-xl'>
         <h1>If you have feedback, contact me at <span className='text-purple-300'>simonv03@tamu.edu</span></h1>
       </div>
     </div>
