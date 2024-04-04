@@ -75,19 +75,31 @@ function ReviewForm({handleReview, handleCancel, uni_id, org_id}) {
                 </div>
                 <div className="w-[80%] mt-2 lg:mt-4 flex flex-row gap-4">
                     <div className="w-[80%]">
-                        <label htmlFor="social" className="block font-bold">Social <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <div className="flex flex-col sm:flex-row items-center  gap-0 sm:gap-1 mb-1 sm:mb-0">
+                            <label htmlFor="social" className="block font-bold">Social</label>
+                            <p className='text-xs md:text-sm font-normal'>(1-5)</p>
+                        </div>
                         <input type="number" min='1' max='5' placeholder='1' name="social" id="social" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="events" className="block font-bold">Events <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <div className="flex flex-col sm:flex-row items-center gap-0 sm:gap-1 mb-1 sm:mb-0">
+                            <label htmlFor="events" className="block font-bold">Events </label>
+                            <p className='text-xs md:text-sm font-normal'>(1-5)</p>
+                        </div>
                         <input type="number" min='1' max='5' placeholder='1' name="events" id="events" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="happiness" className="block font-bold">Happiness <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <div className="flex flex-col sm:flex-row items-center  gap-0 sm:gap-1 mb-1 sm:mb-0">
+                            <label htmlFor="happiness" className="block font-bold">Happiness</label>
+                            <p className='text-xs md:text-sm font-normal'>(1-5)</p>
+                        </div>
                         <input type="number" min='1' max='5' placeholder='1' name="happiness" id="happiness" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                     </div>
                     <div className="w-[80%]">
-                        <label htmlFor="officers" className="block font-bold">Officers <span className='text-xs md:text-sm font-normal'>(1-5)</span></label>
+                        <div className="flex flex-col sm:flex-row items-center  gap-0 sm:gap-1 mb-1 sm:mb-0">
+                            <label htmlFor="officers" className="block font-bold">Officers</label>
+                            <p className='text-xs md:text-sm font-normal'>(1-5)</p>
+                        </div>
                         <input type="number" min='1' max='5' placeholder='1' name="officers" id="officers" className="mt-1 w-full p-2 border-[1px] border-gray-400" required onChange={handleInputChange}/>
                 </div>
                 </div>
