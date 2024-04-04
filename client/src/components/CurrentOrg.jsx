@@ -31,7 +31,7 @@ function CurrentOrg({ org, onClick }) {
           <h2 className='font-bold text-lg'>What the Org is About:</h2>
           <p className=''>{org.desc}</p>
         </div>
-        <div className="mt-2 flex flex-col">
+        <div className="mt-2 flex flex-col w-fit">
           <h2 className='font-bold text-lg'>Website Links:</h2>
           <a href={org.website} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website}</span></a>
           {org.website2 != 'N/A' && <a href={`https://${org.website2}`} className=''><span className='text-blue-600 hover:text-blue-400 transition duration-75'>{org.website2}</span></a>}

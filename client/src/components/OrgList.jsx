@@ -17,7 +17,7 @@ function Org({org, onClick}) {
     return (
       <div onClick={handleClick} className=' xs:w-[320px] sm:w-[450px] md:w-[500px] lg:w-[600px] bg-gray-100 hover:cursor-pointer p-2 mb-1 sm:mb-2 border-[1px] border-gray-300 hover:drop-shadow-md transition ease-in-out duration-300'>
         <h1 className='font-bold text-[14px] md:text-lg'>{org.title}</h1>
-        <small className='text-gray-700 text-xs sm:text-sm'>{org.rec_status} | <a href={org.website} className='text-blue-600 hover:text-blue-400 transition duration-75'><p className='leading-tight xs:leading-snug md:leading-normal'>{org.website}</p></a> </small>
+        <div className='text-gray-700 text-xs sm:text-sm w-fit mb-1'>{org.rec_status}<a href={org.website} className='text-blue-600 hover:text-blue-400 transition duration-75'><p className='leading-tight xs:leading-snug md:leading-normal'>{org.website}</p></a> </div>
         <p className='text-xs sm:text-sm md:text-md'>{org.smalldesc}</p>
       </div>
     )
