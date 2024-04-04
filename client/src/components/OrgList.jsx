@@ -66,9 +66,10 @@ function OrgList({title, filters, handleCurrentOrg}) {
 
   return (
     <>
-        <div className='flex flex-col w-[320px] sm:w-[40%] md:w-[500px] lg:w-[600px]'>
-            {title && <h1 className='font-bold text-lg sm:text-xl md:text-2xl mb-2 leading-tight xs:leading-snug md:leading-normal'>Organizations matching "{title}"</h1> }
-            <small className='text-xs md:text-sm mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)}</small>
+        <div className='flex flex-col w-[320px] sm:w-[40%] md:w-[500px] lg:w-[600px]'>  
+            
+            {title && <h1 className='font-bold text-lg sm:text-xl md:text-2xl mb-2 leading-tight xs:leading-snug md:leading-normal'>{ numOrgs == 1364 ?  `No match. Showing all organizations.` : `Organizations matching "${title}"`}</h1> }
+            <small className='text-xs md:text-sm mb-2'>{numOrgs} results | Page {(offset / 10) + 1} of {Math.ceil(numOrgs / 10)} </small>
             <div className='scrollbar-none overflow-y-scroll h-[72vh]'>
               {orgs.map((org, index) => (
                   <Org key={index} onClick={handleCurrentOrg} org ={org}/>
