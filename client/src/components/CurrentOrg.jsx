@@ -60,7 +60,7 @@ function CurrentOrg({ org, onClick }) {
             </div>
             {org.founded != 'N/A' ? <div className={`bg-purple-100 border-2 border-purple-400 p-1 pl-2 pr-2 text-[11px] w-fit mb-2 rounded-md`}>
               Founded: {org.founded}
-            </div> : <div className={`bg-red-100 border-2 border-red-400 p-1 pl-2 pr-2 text-[13px] w-fit mb-2 rounded-md`}>
+            </div> : <div className={`bg-red-100 border-2 border-red-400 p-1 pl-2 pr-2 text-[11px] w-fit mb-2 rounded-md`}>
               Founded: {org.founded}
             </div>}
           </div>
