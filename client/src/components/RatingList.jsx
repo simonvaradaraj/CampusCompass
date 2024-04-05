@@ -14,18 +14,18 @@ const insightQuestions = {
 
 // map that maps the role value to the role
 const roles = {
-    "nonmember": "non-member",
-    "member": "member",
-    "officer": "officer",
-    "alumni": "alumni",
-    "exmember": "ex-member"
+    "nonmember": " non-member",
+    "member": " member",
+    "officer": "n officer",
+    "alumni": "n alumni",
+    "exmember": "n ex-member"
 }
 
 function Rating({rating}) {
   return (
     <div className='bg-gray-200 w-[320px] sm:w-[40%] md:w-[500px] lg:w-[40vw] p-4 border-[1px] border-gray-400 flex flex-col'>
         <div className="flex flex-row justify-between">
-            <h1 className="font-bold text-md lg:text-xl">This review was made by a {roles[rating.role]}</h1>
+            <h1 className="font-bold text-md lg:text-xl">This review was made by a{roles[rating.role]}</h1>
             <h2 className="font-bold text-xl">{rating.rating}</h2>
         </div>
         <p className='text-[14px] md:text-md'>{rating.review}</p>
