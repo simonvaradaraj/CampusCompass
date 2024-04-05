@@ -43,7 +43,7 @@ function Launch() {
             value={query}
             onChange={handleChange}
             className="bg-white py-3 px-6  placeholder:text-slate-500 rounded-3xl text-black outlined-none border-none font-medium w-[60%] lg:w-[40%] text-xs xs:text-sm sm:text-md md:text-lg"
-            placeholder="What do you want in an org?"
+            placeholder="Search for orgs..."
           />
         </label>
       </Form>
