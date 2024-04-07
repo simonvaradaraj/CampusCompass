@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import Portal from './Portal.jsx'
 import './index.css'
 
-import { Analytics } from "@vercel/analytics/react"
+// import { Analytics } from "@vercel/analytics/react"
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Launch from './components/Launch.jsx'
@@ -31,6 +31,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
-    <Analytics mode={'production'} />
+    {/* <Analytics mode={'production'} /> */}
   </React.StrictMode>,
 )
