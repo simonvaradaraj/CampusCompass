@@ -3,18 +3,22 @@ import ReactDOM from 'react-dom/client'
 import Portal from './Portal.jsx'
 import './index.css'
 
+import { inject } from '@vercel/analytics';
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Launch from './components/Launch.jsx'
-import { searchAction } from './components/Launch.jsx'
+// import { searchAction } from './components/Launch.jsx'
 import NotFound from './components/NotFound.jsx'
 import Discussion from './components/Discussion.jsx'
+
+inject();
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Launch />,
     errorElement: <NotFound />,
-    action: searchAction
+    // action: searchAction
   },
   {
     path: '/search',
