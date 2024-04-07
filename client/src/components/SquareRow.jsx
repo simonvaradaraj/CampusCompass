@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function SquareRow({ number }) {
-    const colors = ["#e51f1f", "#f2a134", "#FFFF00", "#bbdb44", "#2E7F18"];
+    const colors = ["#C04000", "#E3963E", "#F4C430", "#93C572", "#2E7F18"];
     
     return (
         <div className="flex">
